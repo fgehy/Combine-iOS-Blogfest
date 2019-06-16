@@ -19,15 +19,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(createPublisher), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(createPublisherOne), userInfo: nil, repeats: true)
     }
     
-    func addToCityArray(city: String) {
-        
-        cityArray.append(city)
-    }
-    
-    @objc func createPublisher() {
+    @objc func createPublisherOne() {
 
         let newCityArray = ["Honolulu", "San Diego", "New Orleans", "Seattle", "LA"]
 
@@ -39,7 +34,7 @@ class ViewController: UIViewController {
         
         let jacksonvillePublisher = Publishers.Sequence<[[String]], Error>(sequence: [["Jacksonville"]])
         
-        let mainPublisher = Publishers.Sequence<[[String]], Error>(sequence: [cityArray])
+        let allPublishers = Publishers.Sequence<[[String]], Error>(sequence: [cityArray])
             .combineLatest(dallasPublisher) { (existingPub, newCityPub) in
                 return existingPub + newCityPub
             }
@@ -48,32 +43,44 @@ class ViewController: UIViewController {
             })
             .zip(newCityPublisher)
         
-        mainPublisher.sink { (cities) in
+        allPublishers.sink { (cities) in
             self.addToCityArray(city: cities.1)
             print(cities)
         }
         
         
+        checkTimer()
+    }
+    
+    func createPublisherTwo() {
         
-        let mergePub2 = Publishers.Sequence<[String], Error>(sequence: ["Atlanta", "Columbus ", "DC Metro", "Philly", "Charlotte", "Denver", "Richmond"])
+            let mergePub = Publishers.Sequence<[String], Error>(sequence: ["Atlanta", "Columbus ", "DC Metro", "Philly", "Charlotte", "Denver", "Richmond"])
             .append("Miami")
-            /*Atlanta
+                
+            /* Output:
+             Atlanta
              Columbus
              DC Metro
              Philly
              Charlotte
              Denver
              Richmond
-             Miami*/
+             Miami
+            */
             
             .contains("Miami")
-            //true
+            /* Output:
+            true
+            */
         
-//        mergePub2.sink { (cities) in
-//            print(cities)
-//        }
+        mergePub.sink { (cities) in
+            print(cities)
+        }
+    }
+    
+    func addToCityArray(city: String) {
         
-        checkTimer()
+        cityArray.append(city)
     }
     
     func checkTimer() {
