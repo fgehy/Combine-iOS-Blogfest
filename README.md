@@ -23,6 +23,9 @@ Having these modifiers available declaratively means codebases can become much m
 
 [`Subscriber`'s](https://developer.apple.com/documentation/combine/subscriber) act on elements as they receive them. `Subscriber`'s must be reference types, because they generally store and mutate state. Generally, a Subscriber is passed in the `Publisher`'s subscribe method, which invokes the `Subscriber`'s `receive(subscription: )` function on success. The `Subscriber` will then use this subscription to request some number of values from it's associated `Publisher`. This is called [backpressure](https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7), an important thing to note when reasoning about the way a Combine-enabled system will behave. The Subscriber will then `receive(_ : Input)` that number of values or less, before sending a completion block if the `Publisher` is finished or fails.
 
+#### Rx Swift?
+
+`Publishers` and `Subscribers` may seem very similar to [RxSwift](https://github.com/ReactiveX/RxSwift)'s Reactive, `Observable`-based patterns, and you're not wrong if you thought they were. [This blog goes deep into the differences between the two](https://medium.com/q42-engineering/swift-combine-framework-a082b1e23f2a), and actually quickly outlines ways to use them together. With the Combine framework, it's now possible for applications to build reactive components entirely natively, without pulling in a 3rd party library. And because Combine is built by Apple, you can trust their attention to performance will shine through.
 
 ## Taking Combine for a Spin
 
