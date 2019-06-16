@@ -1,7 +1,7 @@
 
 # Harvesting Data with the Combine Framework
 
-While SwiftUI, ML and AR updates have earned most of the attention in the few days after WWDC 2019, Apple's release of the (Combine Framework)[https://developer.apple.com/documentation/combine] may end up having the biggest impact in the near future. The framework's purpose is succinctly stated by Apple: Combine was built to be a unified, declarative framework for processing values over time. When considering the architecture of modern applications built for enterprises, we start to see that processing data over time happens nearly everywhere.
+While SwiftUI, ML and AR updates have earned most of the attention in the few days after WWDC 2019, Apple's release of the [Combine Framework](https://developer.apple.com/documentation/combine) may end up having the biggest impact in the near future. The framework's purpose is succinctly stated by Apple: Combine was built to be a unified, declarative framework for processing values over time. When considering the architecture of modern applications built for enterprises, we start to see that processing data over time happens nearly everywhere.
 
 ## Scouting Out Combine
 
@@ -135,7 +135,7 @@ Apple's new Combine Framework should make writing and maintaining asynchronous, 
   * Key Value Observing
   * Dispatch Groups
 
-These should be good spots to reap some benefits without breaking the bank. [WWDC 2019 offered several sessions on Combine this year] (https://developer.apple.com/videos/wwdc2019/?q=combine) and we expect to see this framework mature into a tool commonly used in most enterprise applications. Combine has not been fully integrated into the early betas of Xcode 11 and several operators and features described in the talks weren't available at the time of this writing. That said, it's definitely not too early to begin exploring what the framework will have to offer this fall and ways to integrate the new Combine framework in your applications.
+These should be good spots to reap some benefits without breaking the bank. [WWDC 2019 offered several sessions on Combine this year](https://developer.apple.com/videos/wwdc2019/?q=combine) and we expect to see this framework mature into a tool commonly used in most enterprise applications. Combine has not been fully integrated into the early betas of Xcode 11 and several operators and features described in the talks weren't available at the time of this writing. That said, it's definitely not too early to begin exploring what the framework will have to offer this fall and ways to integrate the new Combine framework in your applications.
 
 ## About the Authors
 
